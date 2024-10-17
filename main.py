@@ -15,3 +15,14 @@ def get_github_user(username):
         return response.json()
     else:
         return None
+
+import requests
+
+def get_random_cat_image(api_key):
+    url = 'https://api.thecatapi.com/v1/images/search'
+    headers = {'x-api-key': api_key}
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()[0]['url']
+    else:
+        return None
